@@ -1,21 +1,12 @@
 import { motion } from "motion/react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { VaultButton } from "./VaultButton";
+import { useLocation } from "react-router-dom";
 import { usePreloader } from "./PreloaderContext";
 
 export const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
-  const { status, setStatus, setView } = usePreloader();
+  const { status } = usePreloader();
   const isRevealed = status !== "loading";
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const isVaultPage = pathname.startsWith("/vault");
-
-  const handleVaultClick = () => {
-    setStatus("loading");
-    setView("vault");
-    navigate("/vault");
-    window.scrollTo(0, 0);
-  };
 
   const navPositionClass = isVaultPage ? "absolute inset-x-0 top-0" : "relative";
 
@@ -44,7 +35,7 @@ export const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
           <a href="#vault" className="hover:text-white transition-colors">Vaults</a>
         </div>
 
-        {!isVaultPage && <VaultButton label="Launch App" onClick={handleVaultClick} />}
+        <div className="hidden md:block w-[8rem]" aria-hidden="true" />
       </div>
     </motion.nav>
   );
