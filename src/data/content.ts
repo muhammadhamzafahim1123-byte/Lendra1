@@ -1,6 +1,6 @@
 export const LENDRA_CONTENT = {
   hero: {
-    headline: "The intelligence layer behind each portfolio",
+    headline: "AI allocation layer for personalized onchain yield",
     subtext:
       "LENDRA1 turns stablecoin deposits into personalized yield portfolios, composed around your risk, liquidity, and wallet profile.",
     primaryCTA: "Explore Vault",
