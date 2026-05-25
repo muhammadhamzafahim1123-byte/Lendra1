@@ -182,11 +182,7 @@ export const HowItWorks = () => {
                 </h2>
               </div>
 
-              <div className="lg:pt-5">
-                <p className="site-body max-w-2xl text-brand-muted">
-                  {howItWorks.content}
-                </p>
-              </div>
+              <div aria-hidden="true" />
             </div>
           </FadeIn>
         </div>

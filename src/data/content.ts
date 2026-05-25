@@ -26,8 +26,6 @@ export const LENDRA_CONTENT = {
   },
   howItWorks: {
     title: "How LENDRA1 works",
-    content:
-      "A single vault experience receives your stablecoin deposit, reads the portfolio profile you choose, and composes a monitored allocation around your wallet.",
     steps: [
       {
         label: "Deposit stablecoins",
