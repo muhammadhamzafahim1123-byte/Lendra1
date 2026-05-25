@@ -22,17 +22,14 @@ export const IntelligenceLayer = () => {
 
       <div className="relative z-10 mx-auto max-w-[112rem] border-t border-white/10 pt-12">
         <FadeIn>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.75fr)] lg:items-end">
-            <div>
-              <span className="site-kicker mb-5 block text-brand-accent">
-                {intelligence.kicker}
-              </span>
-              <h2 className="site-section-heading max-w-[46rem] text-white">
-                {intelligence.title}
-              </h2>
-            </div>
-
-            <p className="site-body max-w-[42rem] text-brand-muted lg:pb-2">
+          <div className="max-w-[54rem]">
+            <span className="site-kicker mb-5 block text-brand-accent">
+              {intelligence.kicker}
+            </span>
+            <h2 className="site-section-heading max-w-[46rem] text-white">
+              {intelligence.title}
+            </h2>
+            <p className="site-body mt-8 max-w-[44rem] text-brand-muted">
               {intelligence.body}
             </p>
           </div>
