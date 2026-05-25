@@ -4,7 +4,7 @@ import { LENDRA_CONTENT } from "../data/content";
 import { FadeIn } from "./Layout";
 
 export const YieldSource = () => {
-  const { singleTransfer, intelligence } = LENDRA_CONTENT;
+  const { singleTransfer } = LENDRA_CONTENT;
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const mobileImageFrameClass = "relative z-10 h-[18rem] w-full overflow-hidden md:hidden";
@@ -138,17 +138,6 @@ export const YieldSource = () => {
                   {paragraph}
                 </p>
               ))}
-            </div>
-            <div className="mt-10 border-t border-white/10 pt-8">
-              <span className="site-kicker mb-4 block text-brand-accent drop-shadow-sm">
-                {intelligence.kicker}
-              </span>
-              <h3 className="site-card-heading mb-4 max-w-[32rem] text-white">
-                {intelligence.title}
-              </h3>
-              <p className="site-card-body max-w-[34rem] text-brand-muted">
-                {intelligence.body}
-              </p>
             </div>
           </FadeIn>
         </div>

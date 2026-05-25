@@ -4,6 +4,7 @@ import { Positioning } from "./Positioning";
 import { WhatLendraDoes } from "./WhatLendraDoes";
 import { HowItWorks } from "./HowItWorks";
 import { YieldSource } from "./YieldSource";
+import { IntelligenceLayer } from "./IntelligenceLayer";
 import { TrustArchitecture } from "./TrustArchitecture";
 import { VaultParticipation } from "./VaultParticipation";
 import { FinalCTA, Footer } from "./Footer";
@@ -34,6 +35,7 @@ export const Home = () => {
             <Positioning />
             <HowItWorks />
             <YieldSource />
+            <IntelligenceLayer />
             <TrustArchitecture />
             {/* <VaultParticipation
                 id="vault"
