@@ -83,7 +83,7 @@ export const YieldSource = () => {
         <img
           src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=900&q=80"
           alt=""
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
+          className="personalization-temp-visual pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
           aria-hidden="true"
           loading="lazy"
           decoding="async"
@@ -109,7 +109,7 @@ export const YieldSource = () => {
         <img
           src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=1600&q=80"
           alt=""
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
+          className="personalization-temp-visual pointer-events-none absolute inset-y-0 left-0 h-full w-[78%] object-cover opacity-26 mix-blend-screen"
           aria-hidden="true"
           loading="lazy"
           decoding="async"
@@ -124,12 +124,12 @@ export const YieldSource = () => {
 
       {/* Content Container */}
       <div className="relative z-10 mx-auto flex h-full w-full max-w-[112rem] px-6 pb-16 pt-10 md:px-12 md:py-20 lg:min-h-[46rem] lg:items-center lg:px-24">
-        <div className="w-full max-w-[44rem] text-left lg:ml-auto lg:w-[50%] xl:w-[45%]">
+        <div className="w-full max-w-[46rem] text-left lg:ml-auto lg:w-[52%] xl:w-[48%]">
           <FadeIn>
             <span className="site-kicker mb-4 block text-brand-accent drop-shadow-sm">
               {singleTransfer.kicker}
             </span>
-            <h2 className="site-section-heading mb-8 max-w-[32rem] text-white drop-shadow-md">
+            <h2 className="personalization-heading mb-8 max-w-[45rem] text-white drop-shadow-md">
               {singleTransfer.title}
             </h2>
             <div className="site-body max-w-[34rem] space-y-6">

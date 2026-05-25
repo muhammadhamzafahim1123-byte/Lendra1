@@ -118,6 +118,15 @@
     line-height: 1.65;
   }
 
+  .personalization-heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 4.4vw, 4.9rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.03;
+    text-wrap: balance;
+  }
+
   .site-ui-label {
     font-family: var(--font-sans);
     font-size: 0.68rem;
@@ -645,6 +654,17 @@
     line-height: 1.5;
     margin-bottom: 0.75rem;
   }
+
+  .personalization-heading {
+    font-size: 2.35rem;
+    max-width: 22rem;
+  }
+
+  .personalization-temp-visual {
+    object-position: 20% center;
+    transform: scale(0.88);
+    transform-origin: left center;
+  }
 }
 
 @media (min-width: 1441px) {
@@ -711,6 +731,18 @@
 
   .thesis-section video {
     object-position: 22% 50% !important;
+  }
+
+  .personalization-heading {
+    font-size: clamp(3rem, 4.2vw, 4.25rem);
+    max-width: 36rem;
+  }
+
+  .personalization-temp-visual {
+    width: 72% !important;
+    object-position: 20% center;
+    transform: scale(0.9);
+    transform-origin: left center;
   }
 
 }
