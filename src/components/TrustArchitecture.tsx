@@ -18,36 +18,14 @@ const mobileCardClassName =
   "relative overflow-hidden border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur-sm rounded-2xl";
 
 const trustArchitectureCards = [
-  {
-    label: "Proof of Transit",
-    description:
-      "Before any capital is deployed, zkTLS oracles cryptographically confirm a live SWIFT MT103 is in transit, and no deployment happens without that proof.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "72 Hour Exposure Cap",
-    description:
-      "Every cycle carries a maximum 72 hour exposure window, so capital is never stranded in long duration positions, limiting drawdown risk.",
-    icon: Timer,
-  },
-  {
-    label: "Junior Senior Tranche Structure",
-    description:
-      "Operators stake their own first loss capital into the Junior tranche before Lendra1 deploys Senior depositor capital, protecting your position.",
-    icon: Layers,
-  },
-  {
-    label: "Vetted Operator Network",
-    description:
-      "Every operator passes diligence across compliance track record, transaction volume, and corridor reliability before any facility is extended.",
-    icon: Users,
-  },
-  {
-    label: "Stablecoin Denominated",
-    description:
-      "Capital is deposited and returned in stablecoins, reducing direct exposure to volatile token price movements and ensuring predictability.",
-    icon: Wallet,
-  },
+  { icon: ShieldCheck },
+  { icon: Users },
+  { icon: Timer },
+  { icon: Layers },
+  { icon: ShieldCheck },
+  { icon: Timer },
+  { icon: Wallet },
+  { icon: Layers },
 ] as const;
 
 const CardIcon = ({ icon: Icon }: { icon: LucideIcon }) => (
@@ -68,17 +46,28 @@ const DesktopStepCard = ({
   step,
   index,
 }: {
-  step: typeof trustArchitectureCards[number];
+  step: { label: string; description: string };
   index: number;
 }) => {
+  const Icon = trustArchitectureCards[index % trustArchitectureCards.length].icon;
+
   return (
     <div className={desktopCardClassName}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(125,239,219,0.08),transparent_50%)]" />
+      {/* TEMP IMAGE — replace with brand asset */}
+      <img
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen"
+        src="https://images.unsplash.com/photo-1639322537138-5e513100b36e?auto=format&fit=crop&w=900&q=80"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+      />
       <div className="absolute -bottom-24 -right-24 h-48 w-48 rounded-full bg-brand-accent/5 blur-3xl transition-opacity duration-500 group-hover:opacity-100 opacity-0" />
       
       <div className="relative z-10 flex h-full flex-col p-8">
         <div className="flex items-start justify-between">
-          <CardIcon icon={step.icon} />
+          <CardIcon icon={Icon} />
           <CardStepNumber index={index} />
         </div>
 
@@ -96,6 +85,7 @@ const DesktopStepCard = ({
 };
 
 export const TrustArchitecture = () => {
+  const { trustArchitecture, faq } = LENDRA_CONTENT;
   const targetRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -138,7 +128,7 @@ export const TrustArchitecture = () => {
     <section
       ref={targetRef}
       id="trust-architecture"
-      className="relative h-auto lg:h-[400vh] bg-brand-charcoal"
+      className="relative h-auto bg-brand-charcoal lg:h-[520vh]"
     >
       <div className="relative lg:sticky lg:top-0 flex h-auto lg:min-h-screen flex-col justify-center overflow-hidden px-6 py-24 md:px-12 lg:px-24 lg:py-32">
         <div className="mx-auto w-full max-w-[112rem]">
@@ -147,18 +137,19 @@ export const TrustArchitecture = () => {
               <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,40rem)] lg:items-start lg:gap-16">
                 <div>
                   <span className="site-kicker mb-4 block text-brand-accent">
-                    TRUST ARCHITECTURE
+                    {trustArchitecture.kicker}
                   </span>
                   <h2 className="site-section-heading">
-                    Verification
-                    <br />
-                    at core
+                    {trustArchitecture.title}
                   </h2>
                 </div>
 
                 <div className="lg:pt-[3.8rem]">
                   <p className="site-body max-w-2xl ml-5 text-brand-muted">
-                    Lendra1 is built around one principle, capital should only move when the underlying transaction is already verified, and every layer of the protocol reflects that discipline.
+                    {trustArchitecture.body}
+                  </p>
+                  <p className="site-card-body ml-5 mt-5 max-w-2xl text-white/80">
+                    {trustArchitecture.closing}
                   </p>
                 </div>
               </div>
@@ -167,19 +158,31 @@ export const TrustArchitecture = () => {
 
           <div className="relative hidden lg:block" ref={scrollRef}>
             <motion.div ref={trackRef} style={{ x }} className="flex gap-10 w-max pb-4">
-              {trustArchitectureCards.map((step, i) => (
+              {trustArchitecture.cards.map((step, i) => (
                 <DesktopStepCard key={step.label} step={step} index={i} />
               ))}
             </motion.div>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:hidden">
-            {trustArchitectureCards.map((step, i) => (
+            {trustArchitecture.cards.map((step, i) => {
+              const Icon = trustArchitectureCards[i % trustArchitectureCards.length].icon;
+
+              return (
               <article key={step.label} className={mobileCardClassName}>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(125,239,219,0.05),transparent_40%)]" />
+                {/* TEMP IMAGE — replace with brand asset */}
+                <img
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen"
+                  src="https://images.unsplash.com/photo-1639322537138-5e513100b36e?auto=format&fit=crop&w=900&q=80"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div className="relative z-10 p-6 flex flex-col h-full min-h-[16rem]">
                   <div className="flex items-start justify-between mb-8">
-                    <CardIcon icon={step.icon} />
+                    <CardIcon icon={Icon} />
                     <CardStepNumber index={i} />
                   </div>
                   <div className="mt-auto">
@@ -192,7 +195,34 @@ export const TrustArchitecture = () => {
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
+          </div>
+
+          <div className="mt-24 border-t border-white/10 pt-16">
+            <FadeIn>
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)]">
+                <h2 className="site-section-heading">{faq.title}</h2>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {faq.items.map((item) => (
+                    <article
+                      key={item.question}
+                      className="relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6"
+                    >
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(125,239,219,0.05),transparent_40%)]" />
+                      <div className="relative z-10">
+                        <h3 className="site-card-heading mb-3 text-white">
+                          {item.question}
+                        </h3>
+                        <p className="site-card-body text-brand-muted">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </div>

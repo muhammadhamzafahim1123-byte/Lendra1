@@ -11,39 +11,6 @@ const mobileCardClassName =
 
 const DESKTOP_MEDIA_WIDTH = "29rem";
 
-const simpleStructureCards = [
-  {
-    label: "Transfer initiated",
-    description:
-      "A remittance transaction starts on existing financial rails across an active corridor. ",
-    mediaLabel: "Transfer initiated",
-  },
-  {
-    label: "Transit verified",
-    description:
-      "zkTLS oracles cryptographically confirm the SWIFT MT103 exists in transit before any capital moves.",
-    mediaLabel: "Capital bridge provided",
-  },
-  {
-    label: "Capital deployed",
-    description:
-      "Lendra1 vaults distribute stablecoin liquidity across multiple operators bridging simultaneous settlement gaps.",
-    mediaLabel: "Settlement completed",
-  },
-  {
-    label: "Settlement completes",
-    description:
-      "Traditional systems finalize the transfer, operators repay the facility with a transaction fee.",
-    mediaLabel: "Credit repaid",
-  },
-  {
-    label: "Capital recycled",
-    description:
-      " Liquidity returns to the vault and redeploys immediately into fresh demand across active corridors.",
-    mediaLabel: "Capital redeployed",
-  },
-] as const;
-
 const SimpleStructureVideo = ({
   mediaLabel,
   className,
@@ -132,9 +99,11 @@ const SimpleStructureVideo = ({
 const DesktopStepCard = ({
   step,
   index,
+  total,
 }: {
   step: { label: string; description: string; mediaLabel: string };
   index: number;
+  total: number;
 }) => {
   const stepNumber = String(index + 1).padStart(2, "0");
 
@@ -163,7 +132,7 @@ const DesktopStepCard = ({
 
         <div className="flex items-center gap-4 pr-6">
           <span className="site-kicker text-white/90">
-            {stepNumber}/{String(simpleStructureCards.length).padStart(2, "0")}
+            {stepNumber}/{String(total).padStart(2, "0")}
           </span>
           <div className="h-px flex-1 bg-white/12" />
         </div>
@@ -177,6 +146,15 @@ const DesktopStepCard = ({
           mediaLabel={step.mediaLabel}
           className="block h-full w-full object-cover object-center"
         />
+        {/* TEMP IMAGE — replace with brand asset */}
+        <img
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen"
+          src="https://images.unsplash.com/photo-1640161704729-cbe966a08476?auto=format&fit=crop&w=900&q=80"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </>
   );
@@ -184,7 +162,7 @@ const DesktopStepCard = ({
 
 export const HowItWorks = () => {
   const { howItWorks } = LENDRA_CONTENT;
-  const cards = simpleStructureCards;
+  const cards = howItWorks.steps;
 
   return (
     <section
@@ -200,9 +178,7 @@ export const HowItWorks = () => {
                   Process
                 </span>
                 <h2 className="site-section-heading">
-                  Simple
-                  <br />
-                  structure
+                  {howItWorks.title}
                 </h2>
               </div>
 
@@ -229,7 +205,7 @@ export const HowItWorks = () => {
             {cards.map((step, i) => (
               <div key={step.label}>
                 <ScrollStackItem itemClassName={desktopCardClassName}>
-                  <DesktopStepCard step={step} index={i} />
+                  <DesktopStepCard step={step} index={i} total={cards.length} />
                 </ScrollStackItem>
               </div>
             ))}
@@ -269,6 +245,15 @@ export const HowItWorks = () => {
                     <SimpleStructureVideo
                       mediaLabel={step.mediaLabel}
                       className="relative z-10 h-full w-full object-contain object-center mix-blend-screen"
+                    />
+                    {/* TEMP IMAGE — replace with brand asset */}
+                    <img
+                      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen"
+                      src="https://images.unsplash.com/photo-1640161704729-cbe966a08476?auto=format&fit=crop&w=900&q=80"
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>

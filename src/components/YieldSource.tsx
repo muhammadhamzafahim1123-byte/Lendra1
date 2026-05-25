@@ -4,7 +4,7 @@ import { LENDRA_CONTENT } from "../data/content";
 import { FadeIn } from "./Layout";
 
 export const YieldSource = () => {
-  const { singleTransfer } = LENDRA_CONTENT;
+  const { singleTransfer, intelligence } = LENDRA_CONTENT;
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const mobileImageFrameClass = "relative z-10 h-[18rem] w-full overflow-hidden md:hidden";
@@ -13,11 +13,7 @@ export const YieldSource = () => {
   const mobileImageObjectClass = "object-cover object-center";
   const mobileImageTransformClass = "-translate-x-[26%] translate-y-0 scale-100";
 
-  const transferIntroParagraphs = [
-    "A transfer is initiated from one region to another.",
-    "The recipient needs the money now, but settlement takes 72 hours. Lendra1 finances that window, earns a transaction fee, and recycles capital back into the next cycle.",
-    "Depositor capital is distributed across multiple operators and multiple settlement windows simultaneously, all earning, all redeploying continuously against structural demand that never stops. Every cycle that closes flows yield back to the depositors funding it.",
-  ];
+  const transferIntroParagraphs = singleTransfer.paragraphs;
 
   // Professional Scroll Scrubbing logic
   const { scrollYProgress } = useScroll({
@@ -83,6 +79,15 @@ export const YieldSource = () => {
           alt=""
           className={`absolute ${mobileImagePositionClass} ${mobileImageSizeClass} ${mobileImageObjectClass} ${mobileImageTransformClass}`}
         />
+        {/* TEMP IMAGE — replace with brand asset */}
+        <img
+          src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=900&q=80"
+          alt=""
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brand-midnight to-transparent" />
       </div>
 
@@ -100,6 +105,15 @@ export const YieldSource = () => {
         >
           <source src="/A%20single%20transfer.mp4" type="video/mp4" />
         </video>
+        {/* TEMP IMAGE — replace with brand asset */}
+        <img
+          src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=1600&q=80"
+          alt=""
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+        />
 
         {/* Gradient overlay from the right for text legibility */}
         <div
@@ -113,7 +127,7 @@ export const YieldSource = () => {
         <div className="w-full max-w-[44rem] text-left lg:ml-auto lg:w-[50%] xl:w-[45%]">
           <FadeIn>
             <span className="site-kicker mb-4 block text-brand-accent drop-shadow-sm">
-              Thesis
+              {singleTransfer.kicker}
             </span>
             <h2 className="site-section-heading mb-8 max-w-[32rem] text-white drop-shadow-md">
               {singleTransfer.title}
@@ -124,6 +138,17 @@ export const YieldSource = () => {
                   {paragraph}
                 </p>
               ))}
+            </div>
+            <div className="mt-10 border-t border-white/10 pt-8">
+              <span className="site-kicker mb-4 block text-brand-accent drop-shadow-sm">
+                {intelligence.kicker}
+              </span>
+              <h3 className="site-card-heading mb-4 max-w-[32rem] text-white">
+                {intelligence.title}
+              </h3>
+              <p className="site-card-body max-w-[34rem] text-brand-muted">
+                {intelligence.body}
+              </p>
             </div>
           </FadeIn>
         </div>

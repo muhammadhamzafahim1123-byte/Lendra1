@@ -44,7 +44,7 @@ export const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
           <a href="#vault" className="hover:text-white transition-colors">Vaults</a>
         </div>
 
-        {!isVaultPage && <VaultButton label="Enter Vaults" onClick={handleVaultClick} />}
+        {!isVaultPage && <VaultButton label="Launch App" onClick={handleVaultClick} />}
       </div>
     </motion.nav>
   );

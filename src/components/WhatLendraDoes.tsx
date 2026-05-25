@@ -1,21 +1,6 @@
 import { LENDRA_CONTENT } from "../data/content";
 import { Section, FadeIn } from "./Layout";
 
-const mechanismPoints = [
-  {
-    label: "Payment sent",
-    value: "Timing gap opens",
-  },
-  {
-    label: "LENDRA1 bridge",
-    value: "USD1 liquidity deployed",
-  },
-  {
-    label: "Settlement clears",
-    value: "Capital cycles back",
-  },
-];
-
 const CapitalTimingVideo = () => {
   return (
     <div className="capital-timing-media-frame relative w-full overflow-hidden rounded-[1.4rem] border border-white/12 bg-[#070a09]">
@@ -41,7 +26,7 @@ export const WhatLendraDoes = () => {
     <Section id="what-we-do" className="capital-timing-section">
       <div className="capital-timing-shell">
         <FadeIn direction="left" className="capital-timing-copy">
-          <span className="capital-timing-kicker site-kicker">The Mechanism</span>
+          <span className="capital-timing-kicker site-kicker">{whatWeDo.kicker}</span>
           <h2 className="capital-timing-title site-section-heading">{whatWeDo.title}</h2>
           <p className="capital-timing-body site-body">
             {whatWeDo.content}
@@ -51,9 +36,18 @@ export const WhatLendraDoes = () => {
         <FadeIn direction="right" delay={0.18} className="capital-timing-visual">
           <div className="capital-timing-orbit" aria-hidden="true" />
           <CapitalTimingVideo />
+          {/* TEMP IMAGE — replace with brand asset */}
+          <img
+            className="pointer-events-none absolute inset-0 z-20 h-full w-full rounded-[1.4rem] object-cover opacity-25 mix-blend-screen"
+            src="https://images.unsplash.com/photo-1642104704074-907c0698cbd9?auto=format&fit=crop&w=1200&q=80"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
 
           <div className="capital-timing-flow" aria-label="Capital timing flow">
-            {mechanismPoints.map((point, index) => (
+            {whatWeDo.flow.map((point, index) => (
               <div className="capital-timing-flow-item" key={point.label}>
                 <span className="capital-timing-flow-index">0{index + 1}</span>
                 <div>

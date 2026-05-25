@@ -7,6 +7,9 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
   const { hero } = LENDRA_CONTENT;
   const { status } = usePreloader();
   const isRevealed = status !== "loading";
+  const scrollToHowItWorks = () => {
+    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section className="hero-section relative h-[100svh] overflow-hidden px-6 pb-4 pt-32 md:-mt-20 md:px-12 md:pb-6 lg:px-24">
@@ -18,6 +21,16 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
         src="/Hero_Visual.png"
         alt=""
         fetchPriority="high"
+        aria-hidden="true"
+      />
+      {/* TEMP IMAGE — replace with brand asset */}
+      <motion.img
+        initial={{ scale: 1.04, opacity: 0 }}
+        animate={isRevealed ? { scale: 1.04, opacity: 0.28 } : { scale: 1.04, opacity: 0 }}
+        transition={{ duration: 2.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden h-full w-[62%] object-cover object-center mix-blend-screen md:block"
+        src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1600&q=80"
+        alt=""
         aria-hidden="true"
       />
 
@@ -49,9 +62,10 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
               initial={{ y: 20, opacity: 0 }}
               animate={isRevealed ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
               transition={{ duration: 1.2, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-3 mb-4"
+              className="mt-3 mb-4 flex flex-wrap items-center gap-4"
             >
-              <VaultButton label="Enter Vaults" onClick={onEnterVault} />
+              <VaultButton label={hero.primaryCTA} onClick={onEnterVault} />
+              <VaultButton label={hero.secondaryCTA} onClick={scrollToHowItWorks} />
             </motion.div>
           </div>
         </div>

@@ -9,10 +9,16 @@ export const Positioning = () => {
       <div className="mx-auto flex min-h-[36rem] max-w-[112rem] flex-col gap-8 lg:grid lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-0">
         <FadeIn direction="right" className="relative z-10 max-w-2xl pt-16 md:pt-20 lg:py-16">
           <h2 className="site-kicker mb-4 text-brand-accent">
-            Positioning
+            {positioning.kicker}
           </h2>
           <p className="site-hero-heading max-w-2xl text-white">
-            {positioning}
+            {positioning.title}
+          </p>
+          <p className="site-body mt-6 max-w-xl text-brand-muted">
+            {positioning.body}
+          </p>
+          <p className="site-card-body mt-5 max-w-xl text-white/85">
+            {positioning.line}
           </p>
         </FadeIn>
 
@@ -27,6 +33,15 @@ export const Positioning = () => {
             loading="lazy"
             decoding="async"
             className="h-full w-full object-contain scale-[1.9] translate-x-[-27%] translate-y-[15%] lg:translate-x-0 lg:translate-y-0 lg:scale-100 lg:object-right sm:w-[120%] opacity-100"
+          />
+          {/* TEMP IMAGE — replace with brand asset */}
+          <img
+            src="https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=1200&q=80"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
           />
         </FadeIn>
       </div>

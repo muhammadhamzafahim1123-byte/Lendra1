@@ -45,8 +45,12 @@ export const FinalCTA = ({ onEnterVault }: { onEnterVault: () => void }) => {
           <h2 className="site-section-heading mb-12">
             {finalCTA.title}
           </h2>
-          <div className="flex justify-center">
-            <VaultButton label={finalCTA.buttonText} onClick={onEnterVault} />
+          <p className="site-body mx-auto -mt-6 mb-10 max-w-2xl text-brand-muted">
+            {finalCTA.subtext}
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <VaultButton label={finalCTA.primaryCTA} onClick={onEnterVault} />
+            <VaultButton label={finalCTA.secondaryCTA} onClick={() => window.location.assign("#trust-architecture")} />
           </div>
         </FadeIn>
       </div>
