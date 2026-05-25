@@ -1,0 +1,83 @@
+.magic-bento {
+  --glow-color: 132, 0, 255;
+  position: relative;
+}
+
+.magic-bento-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.magic-bento-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background:
+    radial-gradient(
+      var(--glow-radius, 320px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(var(--glow-color), calc(var(--glow-intensity, 0) * 0.55)) 0%,
+      rgba(var(--glow-color), calc(var(--glow-intensity, 0) * 0.2)) 30%,
+      transparent 60%
+    );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.magic-bento-card.magic-bento-card--border-glow::after {
+  opacity: 1;
+}
+
+.magic-bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      var(--spotlight-radius, 400px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(var(--glow-color), calc(var(--spotlight-intensity, 0) * 0.08)) 0%,
+      rgba(var(--glow-color), calc(var(--spotlight-intensity, 0) * 0.035)) 20%,
+      transparent 60%
+    );
+  pointer-events: none;
+  opacity: 1;
+}
+
+.magic-bento-spotlight {
+  position: absolute;
+  width: 42rem;
+  height: 42rem;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(
+      circle,
+      rgba(var(--glow-color), 0.16) 0%,
+      rgba(var(--glow-color), 0.08) 18%,
+      rgba(var(--glow-color), 0.03) 34%,
+      transparent 68%
+    );
+  mix-blend-mode: screen;
+}
+
+.magic-bento-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 5;
+  background: rgba(var(--glow-color), 1);
+  box-shadow: 0 0 10px rgba(var(--glow-color), 0.5);
+}
