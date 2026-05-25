@@ -614,6 +614,24 @@
 }
 
 @media (max-width: 767px) {
+  .hero-section {
+    min-height: 42rem;
+    padding-top: 7rem;
+  }
+
+  .hero-visual {
+    height: 68%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .hero-copy {
+    margin-inline: auto;
+    max-width: 24rem;
+    padding-bottom: 0.25rem;
+    text-align: center;
+  }
+
   .hero-heading {
     font-size: 1.6rem !important;
     max-width: 100%;
@@ -628,8 +646,13 @@
 }
 
 @media (min-width: 1441px) {
-  .hero-readable-overlay {
-    display: none;
+  .hero-section {
+    min-height: 48rem;
+  }
+
+  .hero-visual {
+    object-fit: cover;
+    object-position: center;
   }
 
   .vault-participation-pc-image {
@@ -648,7 +671,7 @@
   }
 
   .hero-visual {
-    object-position: 92% 50%;
+    object-position: center;
   }
 
   .hero-copy {
