@@ -29,13 +29,11 @@ export const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
           onClick={onLogoClick}
         />
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-brand-muted">
+        <div className="ml-auto hidden items-center gap-8 text-sm font-medium text-brand-muted md:flex">
           <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
           <a href="#yield" className="hover:text-white transition-colors">Yield</a>
           <a href="#vault" className="hover:text-white transition-colors">Vaults</a>
         </div>
-
-        <div className="hidden md:block w-[8rem]" aria-hidden="true" />
       </div>
     </motion.nav>
   );
