@@ -619,10 +619,12 @@
     padding-top: 7rem;
   }
 
-  .hero-visual {
-    height: 68%;
-    object-fit: cover;
-    object-position: center top;
+  .hero-visual-frame {
+    top: 5.25rem;
+    height: 50%;
+    width: 155%;
+    left: -27.5%;
+    right: auto;
   }
 
   .hero-copy {
@@ -650,9 +652,10 @@
     min-height: 48rem;
   }
 
-  .hero-visual {
-    object-fit: cover;
-    object-position: center;
+  .hero-visual-frame {
+    top: 4rem;
+    height: 66%;
+    max-width: 108rem;
   }
 
   .vault-participation-pc-image {
@@ -670,8 +673,10 @@
     padding-right: 3.25rem;
   }
 
-  .hero-visual {
-    object-position: center;
+  .hero-visual-frame {
+    top: 4.25rem;
+    height: 64%;
+    max-width: 96rem;
   }
 
   .hero-copy {

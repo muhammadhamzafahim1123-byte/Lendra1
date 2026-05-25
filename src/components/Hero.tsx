@@ -13,16 +13,20 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
 
   return (
     <section className="hero-section relative h-[100svh] min-h-[42rem] overflow-hidden bg-black px-6 pb-4 pt-32 md:-mt-20 md:px-12 md:pb-6 lg:px-24">
-      <motion.img
+      <motion.div
         initial={{ scale: 1.04, opacity: 0 }}
         animate={isRevealed ? { scale: 1, opacity: 1 } : { scale: 1.04, opacity: 0 }}
         transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-        className="hero-visual absolute inset-0 h-full w-full object-cover object-center"
-        src="/hero-visual-reference.png"
-        alt=""
-        fetchPriority="high"
+        className="hero-visual-frame pointer-events-none absolute inset-x-0 top-16 mx-auto h-[68%] w-full max-w-[118rem]"
         aria-hidden="true"
-      />
+      >
+        <img
+          className="hero-visual h-full w-full object-contain object-top"
+          src="/hero-visual-reference.png"
+          alt=""
+          fetchPriority="high"
+        />
+      </motion.div>
 
       {/* Enhanced bottom overlay for mobile legibility */}
       <div
