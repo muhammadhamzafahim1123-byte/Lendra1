@@ -17,7 +17,7 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
         initial={{ scale: 1.04, opacity: 0 }}
         animate={isRevealed ? { scale: 1, opacity: 1 } : { scale: 1.04, opacity: 0 }}
         transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-        className="hero-visual-frame pointer-events-none absolute inset-x-0 top-16 mx-auto h-[68%] w-full max-w-[118rem]"
+        className="hero-visual-frame pointer-events-none absolute inset-x-0 top-16 mx-auto h-[72%] w-full max-w-[125rem]"
         aria-hidden="true"
       >
         <img

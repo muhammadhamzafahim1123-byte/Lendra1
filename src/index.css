@@ -621,9 +621,9 @@
 
   .hero-visual-frame {
     top: 5.25rem;
-    height: 50%;
-    width: 155%;
-    left: -27.5%;
+    height: 53%;
+    width: 164%;
+    left: -32%;
     right: auto;
   }
 
@@ -654,8 +654,8 @@
 
   .hero-visual-frame {
     top: 4rem;
-    height: 66%;
-    max-width: 108rem;
+    height: 70%;
+    max-width: 115rem;
   }
 
   .vault-participation-pc-image {
@@ -675,8 +675,8 @@
 
   .hero-visual-frame {
     top: 4.25rem;
-    height: 64%;
-    max-width: 96rem;
+    height: 68%;
+    max-width: 102rem;
   }
 
   .hero-copy {
