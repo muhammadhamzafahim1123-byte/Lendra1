@@ -1,14 +1,41 @@
 import { motion } from "motion/react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { usePreloader } from "./PreloaderContext";
+import { VaultButton } from "./VaultButton";
+import { useWallet } from "../hooks/useWallet";
+
+const landingLinks = [
+  { label: "Yield", id: "yield" },
+  { label: "Intelligence Layer", id: "intelligence" },
+  { label: "AI Committee", id: "ai-committee" },
+  { label: "FAQ", id: "faq" },
+] as const;
 
 export const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
-  const { status } = usePreloader();
+  const { status, setView } = usePreloader();
   const isRevealed = status !== "loading";
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const isVaultPage = pathname.startsWith("/vault");
+  const { address, connect, isConnecting } = useWallet();
 
   const navPositionClass = isVaultPage ? "absolute inset-x-0 top-0" : "relative";
+
+  const scrollToLandingSection = (id: string) => {
+    const scroll = () => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    setView("home");
+
+    if (pathname !== "/") {
+      navigate("/");
+      window.setTimeout(scroll, 120);
+      return;
+    }
+
+    scroll();
+  };
 
   return (
     <motion.nav
@@ -21,7 +48,7 @@ export const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
       }}
       className={`${navPositionClass} z-50 px-6 py-4 bg-brand-midnight/40 backdrop-blur-md md:bg-transparent md:backdrop-blur-none md:px-12 md:py-6 lg:px-24`}
     >
-      <div className="mx-auto flex w-full max-w-[112rem] items-center justify-between">
+      <div className="relative mx-auto flex w-full max-w-[112rem] items-center justify-between">
         <img
           src="/Lendra1.svg"
           alt="LENDRA1"
@@ -29,10 +56,28 @@ export const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
           onClick={onLogoClick}
         />
 
-        <div className="ml-auto hidden items-center gap-8 text-sm font-medium text-brand-muted md:flex">
-          <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
-          <a href="#yield" className="hover:text-white transition-colors">Yield</a>
-          <a href="#vault" className="hover:text-white transition-colors">Vaults</a>
+        <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 whitespace-nowrap text-sm font-medium text-brand-muted lg:flex">
+          {landingLinks.map((link) => (
+            <button
+              key={link.id}
+              type="button"
+              onClick={() => scrollToLandingSection(link.id)}
+              className="cursor-pointer transition-colors hover:text-[#4BFFB3]"
+            >
+              {link.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="ml-auto hidden lg:flex">
+          <VaultButton
+            label={address
+              ? `${address.slice(0, 6)}...${address.slice(-4)}`
+              : isConnecting
+                ? "Connecting..."
+                : "Connect Wallet"}
+            onClick={connect}
+          />
         </div>
       </div>
     </motion.nav>

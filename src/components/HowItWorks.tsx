@@ -10,6 +10,11 @@ const mobileCardClassName =
   "relative overflow-hidden border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur-sm";
 
 const DESKTOP_MEDIA_WIDTH = "29rem";
+const staticStepImages: Record<string, string> = {
+  "Capital bridge provided": "/Capital%20bridge%20provided.png",
+  "Settlement completed": "/Set%20your%20profile.png",
+  "Capital redeployed": "/Receive%20a%20personalized%20allocation.png",
+};
 
 const SimpleStructureVideo = ({
   mediaLabel,
@@ -96,6 +101,31 @@ const SimpleStructureVideo = ({
   );
 };
 
+const StepMedia = ({
+  mediaLabel,
+  className,
+}: {
+  mediaLabel: string;
+  className: string;
+}) => {
+  const imageSrc = staticStepImages[mediaLabel];
+
+  if (imageSrc) {
+    return (
+      <img
+        className={className}
+        src={imageSrc}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+      />
+    );
+  }
+
+  return <SimpleStructureVideo mediaLabel={mediaLabel} className={className} />;
+};
+
 const DesktopStepCard = ({
   step,
   index,
@@ -142,18 +172,9 @@ const DesktopStepCard = ({
         className="absolute inset-y-0 right-0 z-10 overflow-hidden border-l border-white/8 bg-black"
         style={{ width: DESKTOP_MEDIA_WIDTH }}
       >
-        <SimpleStructureVideo
+        <StepMedia
           mediaLabel={step.mediaLabel}
           className="block h-full w-full object-cover object-center"
-        />
-        {/* TEMP IMAGE — replace with brand asset */}
-        <img
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen"
-          src="https://images.unsplash.com/photo-1640161704729-cbe966a08476?auto=format&fit=crop&w=900&q=80"
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
         />
       </div>
     </>
@@ -167,22 +188,20 @@ export const HowItWorks = () => {
   return (
     <section
       id="how-it-works"
-      className="relative bg-brand-charcoal px-6 py-24 md:px-12 lg:px-24"
+      className="relative bg-brand-charcoal px-6 py-20 md:px-10 md:py-24 lg:px-16"
     >
-      <div className="mx-auto max-w-[112rem]">
+      <div className="mx-auto max-w-[96rem]">
         <div className="mb-4 md:mb-6">
           <FadeIn>
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,40rem)] lg:items-start lg:gap-16">
+            <div className="mx-auto max-w-[56rem] text-center">
               <div>
-                <span className="site-kicker mb-4 block text-brand-accent">
+                <span className="site-kicker mb-4 block text-center text-brand-accent">
                   Process
                 </span>
                 <h2 className="site-section-heading">
                   {howItWorks.title}
                 </h2>
               </div>
-
-              <div aria-hidden="true" />
             </div>
           </FadeIn>
         </div>
@@ -238,18 +257,9 @@ export const HowItWorks = () => {
                 <div className="relative flex min-h-[15rem] items-center justify-center overflow-hidden bg-black/60">
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_52%)]" />
                   <div className="relative flex aspect-square h-full max-h-full max-w-full items-center justify-center overflow-hidden">
-                    <SimpleStructureVideo
+                    <StepMedia
                       mediaLabel={step.mediaLabel}
-                      className="relative z-10 h-full w-full object-contain object-center mix-blend-screen"
-                    />
-                    {/* TEMP IMAGE — replace with brand asset */}
-                    <img
-                      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen"
-                      src="https://images.unsplash.com/photo-1640161704729-cbe966a08476?auto=format&fit=crop&w=900&q=80"
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      decoding="async"
+                      className="relative z-10 h-full w-full object-cover object-center"
                     />
                   </div>
                 </div>

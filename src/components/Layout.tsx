@@ -13,9 +13,9 @@ export const Section = ({ children, className = "", id, style }: SectionProps) =
     <section
       id={id}
       style={style}
-      className={`relative py-24 px-6 md:px-12 lg:px-24 overflow-hidden ${className}`}
+      className={`relative px-6 py-20 md:px-10 md:py-24 lg:px-16 overflow-hidden ${className}`}
     >
-      <div className="max-w-[112rem] mx-auto relative z-10">
+      <div className="mx-auto max-w-[96rem] relative z-10">
         {children}
       </div>
     </section>

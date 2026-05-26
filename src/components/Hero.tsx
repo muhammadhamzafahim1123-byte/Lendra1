@@ -8,7 +8,7 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
   const { status } = usePreloader();
   const isRevealed = status !== "loading";
   const scrollToHowItWorks = () => {
-    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -17,11 +17,12 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
         initial={{ scale: 1.04, opacity: 0 }}
         animate={isRevealed ? { scale: 1, opacity: 1 } : { scale: 1.04, opacity: 0 }}
         transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-        className="hero-visual-frame pointer-events-none absolute inset-x-0 top-16 mx-auto h-[72%] w-full max-w-[125rem]"
+        className="hero-visual-frame pointer-events-none absolute inset-x-0 top-16 isolate mx-auto h-[72%] w-full max-w-[125rem] overflow-hidden bg-black"
         aria-hidden="true"
       >
+        <div className="hero-visual-matte absolute inset-0 bg-black" />
         <img
-          className="hero-visual h-full w-full object-contain object-top"
+          className="hero-visual relative z-[1] h-full w-full object-contain object-top"
           src="/hero-visual-reference.png"
           alt=""
           fetchPriority="high"
@@ -62,7 +63,13 @@ export const Hero = ({ onEnterVault }: { onEnterVault: () => void }) => {
               className="mt-3 mb-4 flex flex-wrap items-center justify-center gap-4"
             >
               <VaultButton label={hero.primaryCTA} onClick={onEnterVault} />
-              <VaultButton label={hero.secondaryCTA} onClick={scrollToHowItWorks} />
+              <button
+                type="button"
+                onClick={scrollToHowItWorks}
+                className="flex h-[46px] min-w-[132px] items-center justify-center rounded-full border border-white/18 bg-white/[0.025] px-6 text-sm font-medium text-white/78 backdrop-blur transition-colors hover:border-[#4BFFB3]/55 hover:text-[#4BFFB3] max-md:h-[38px] max-md:min-w-[110px] max-md:text-[13px]"
+              >
+                How it works
+              </button>
             </motion.div>
           </div>
         </div>

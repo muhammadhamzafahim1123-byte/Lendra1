@@ -40,17 +40,18 @@ export const FinalCTA = ({ onEnterVault }: { onEnterVault: () => void }) => {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center md:px-12 lg:px-24">
+      <div className="relative z-10 mx-auto max-w-4xl px-6 py-20 text-center md:px-10 md:py-24 lg:px-16">
         <FadeIn>
-          <h2 className="site-section-heading mb-12">
-            {finalCTA.title}
-          </h2>
+          <h2 className="site-section-heading mb-12">{finalCTA.title}</h2>
           <p className="site-body mx-auto -mt-6 mb-10 max-w-2xl text-brand-muted">
             {finalCTA.subtext}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <VaultButton label={finalCTA.primaryCTA} onClick={onEnterVault} />
-            <VaultButton label={finalCTA.secondaryCTA} onClick={() => window.location.assign("#trust-architecture")} />
+            <VaultButton
+              label={finalCTA.secondaryCTA}
+              onClick={() => window.location.assign("#trust-architecture")}
+            />
           </div>
         </FadeIn>
       </div>
@@ -62,36 +63,46 @@ export const Footer = () => {
   const { footer } = LENDRA_CONTENT;
 
   return (
-    <footer className="bg-brand-midnight border-t border-white/5 py-20 px-6 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
+    <footer className="border-t border-white/6 bg-[#151515] px-6 py-16 md:px-10 lg:px-16">
+      <div className="mx-auto max-w-[96rem]">
+        <div className="grid gap-12 pb-16 md:grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)] md:items-start lg:pb-20">
           <div>
             <img
               src="/Lendra1.svg"
               alt="LENDRA1"
-              className="mb-6 h-6 w-auto"
+              className="mb-7 h-7 w-auto opacity-90"
             />
-            <p className="site-card-body max-w-sm text-brand-muted">
+            <p className="max-w-[25rem] text-[0.98rem] leading-7 text-brand-muted">
               {footer.text}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-8 md:justify-end">
+          <nav
+            className="flex flex-wrap gap-8 md:justify-end md:pt-1 lg:gap-10"
+            aria-label="Footer"
+          >
             {footer.links.map((link, i) => (
-              <a key={i} href="#" className="text-sm font-medium text-brand-muted hover:text-white transition-colors">
+              <a
+                key={i}
+                href="#"
+                className="text-sm font-medium text-brand-muted transition-colors hover:text-white"
+              >
                 {link}
               </a>
             ))}
-          </div>
+          </nav>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="site-ui-label text-brand-muted">
+        <div className="flex flex-col gap-6 border-t border-white/8 pt-9 md:flex-row md:items-center md:justify-between">
+          <p className="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-muted">
             © 2026 LENDRA1. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-6">
-            <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
-            <span className="site-ui-label text-brand-muted">System Status: Operational</span>
+
+          <div className="flex items-center gap-5">
+            <div className="h-2 w-2 rounded-full bg-white" />
+            <span className="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-muted">
+              System Status: Operational
+            </span>
           </div>
         </div>
       </div>

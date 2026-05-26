@@ -65,10 +65,12 @@ export const LENDRA_CONTENT = {
     kicker: "AI Committee",
     title: "A structured review process for every allocation",
     body:
-      "LENDRA1 is built with a multi-agent review process that evaluates allocation changes across risk, credit, and market conditions. Each portfolio update is assessed through separate analytical roles, helping the system avoid single-model dependence and maintain a clear decision trail.",
+      "LENDRA1 is built with a multi-agent review process that evaluates allocation changes across risk, credit, and market conditions.",
+    bodyTwo:
+      "Each portfolio update is assessed through separate analytical roles, helping the system avoid single-model dependence and maintain a clear decision trail.",
     closing:
       "Allocation decisions are reviewed, compared, and recorded before portfolios move.",
-    cards: [
+    agents: [
       {
         label: "Conservative Quant",
         description:
@@ -84,30 +86,55 @@ export const LENDRA_CONTENT = {
         description:
           "Tracks liquidity shifts, market movement, secondary pricing, and emerging signals.",
       },
+    ],
+    sections: [
       {
+        kicker: "Opportunity Universe",
         label: "Opportunity Universe",
+        title: "A wider universe of yield, organized into one allocation layer.",
         description:
-          "A wider universe of yield, organized into one allocation layer across tokenized credit, RWA products, treasury-linked strategies, and institutional issuers.",
+          "Onchain yield is expanding across tokenized credit, RWA products, treasury-linked strategies, and institutional issuers. The challenge is no longer just finding opportunities; it is understanding which exposure fits each wallet.",
+        descriptionTwo:
+          "LENDRA1 brings this opportunity set into a single allocation layer, where stablecoins can be routed based on profile, risk, liquidity, and market conditions.",
+        closing: "A larger yield market needs more intelligent allocation.",
       },
       {
+        kicker: "Risk Intelligence",
         label: "Risk Intelligence",
+        title: "Risk intelligence beneath every allocation",
         description:
-          "Reviews credit quality, duration, collateral exposure, liquidity conditions, repayment behavior, and changing market risk beneath every allocation.",
+          "Every yield opportunity carries more than a return figure. It carries credit quality, duration, collateral exposure, liquidity conditions, repayment behavior, and changing market risk.",
+        descriptionTwo:
+          "LENDRA1 is designed to review these variables continuously, so portfolios are not shaped by headline APR alone.",
+        closing: "Yield becomes more useful when the risk behind it is visible.",
       },
       {
+        kicker: "Exit Signals",
         label: "Exit Signals",
+        title: "Monitoring risk before it becomes obvious",
         description:
-          "Monitors borrower behavior, market activity, governance updates, pricing movement, and onchain data before risk becomes obvious.",
+          "In credit and yield markets, exits matter as much as entries. LENDRA1 monitors signals across borrower behavior, market activity, governance updates, pricing movement, and onchain data to identify when an opportunity may no longer fit a portfolio's risk profile.",
+        descriptionTwo:
+          "The goal is to support earlier, better-informed allocation decisions as conditions change.",
       },
       {
-        label: "Transparent performance attribution",
+        kicker: "Counterfactual Reporting",
+        label: "Counterfactual Reporting",
+        title: "Transparent performance attribution",
         description:
-          "Compares new allocations against prior ones so users can understand how changes affected performance across each reporting cycle.",
+          "Every portfolio update should create a record. LENDRA1 is designed to compare new allocations against prior ones, helping users understand how changes affected performance across each reporting cycle.",
+        descriptionTwo:
+          "This turns portfolio management into a visible process, where decisions can be reviewed through outcomes rather than trust alone.",
       },
       {
-        label: "Performance-linked fee model",
+        kicker: "Economics",
+        label: "Economics",
+        title: "A performance-linked fee model.",
         description:
-          "LENDRA1 does not charge deposit or withdrawal fees. The protocol earns a 10% performance fee above benchmark.",
+          "LENDRA1 does not charge deposit or withdrawal fees.",
+        descriptionTwo:
+          "The protocol earns through a performance fee above benchmark, aligning the system with better allocation outcomes.",
+        closing: "10% performance fee above benchmark.",
       },
     ],
   },
@@ -175,7 +202,7 @@ export const LENDRA_CONTENT = {
   },
   footer: {
     text:
-      "LENDRA1 turns stablecoin deposits into personalized onchain yield portfolios shaped by risk, liquidity, and wallet profile.",
+      "LENDRA1 allocates capital into short-term credit facilities supporting global remittance activity. Participation involves exposure to real transaction flow and variable outcomes.",
     links: ["Documentation", "Risk Disclosure", "Terms"],
   },
 };

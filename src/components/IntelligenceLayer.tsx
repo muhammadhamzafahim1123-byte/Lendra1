@@ -5,22 +5,21 @@ export const IntelligenceLayer = () => {
   const { intelligence } = LENDRA_CONTENT;
 
   return (
-    <section className="relative overflow-hidden bg-brand-midnight px-6 py-24 md:px-12 lg:px-24">
-      {/* TEMP IMAGE — replace with brand asset */}
+    <section id="intelligence" className="relative overflow-hidden bg-black px-6 py-20 md:px-10 md:py-24 lg:px-16">
       <img
-        src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=1800&q=80"
+        src="/Ai%20intelegence.png"
         alt=""
         aria-hidden="true"
         loading="lazy"
         decoding="async"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen"
+        className="pointer-events-none absolute inset-y-0 right-0 h-full w-[100%] max-w-none object-cover object-[66%_center] opacity-100 md:w-[82%] md:object-center lg:w-[74%] xl:w-[68%]"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.68)_46%,rgba(0,0,0,0.9)_100%),radial-gradient(circle_at_18%_18%,rgba(125,239,219,0.12),transparent_34%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0.86)_30%,rgba(0,0,0,0.28)_50%,transparent_68%)]"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-[112rem] border-t border-white/10 pt-12">
+      <div className="relative z-10 mx-auto max-w-[96rem] pt-10">
         <FadeIn>
           <div className="max-w-[54rem]">
             <span className="site-kicker mb-5 block text-brand-accent">

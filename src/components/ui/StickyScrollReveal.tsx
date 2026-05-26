@@ -93,7 +93,7 @@ export function StickyScroll({
   );
 
   return (
-    <div className={`grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,1.1fr)] lg:gap-16 ${className}`.trim()}>
+    <div className={`grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] lg:gap-12 ${className}`.trim()}>
       <div className="relative">
         <div className="space-y-0">
           {content.map((item, index) => {

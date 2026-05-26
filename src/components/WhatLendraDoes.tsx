@@ -1,20 +1,17 @@
 import { LENDRA_CONTENT } from "../data/content";
 import { Section, FadeIn } from "./Layout";
 
-const CapitalTimingVideo = () => {
+const ProblemVisual = () => {
   return (
-    <div className="capital-timing-media-frame relative w-full overflow-hidden rounded-[1.4rem] border border-white/12 bg-[#070a09]">
-      <div className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_28%,rgba(0,0,0,0.18)),radial-gradient(circle_at_78%_20%,rgba(125,239,219,0.18),transparent_28%)]" />
-      <video
-        className="relative z-10 block h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      >
-        <source src="/Capital%20for%20timing%20gaps.mp4" type="video/mp4" />
-      </video>
+    <div className="relative mx-auto aspect-[678/383] w-full max-w-[42.375rem] overflow-hidden rounded-[1.4rem] border border-white/12 bg-[#070a09] lg:mr-0">
+      <img
+        className="block h-full w-full object-cover"
+        src="/Problem-2x.png"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
   );
 };
@@ -28,35 +25,12 @@ export const WhatLendraDoes = () => {
         <FadeIn direction="left" className="capital-timing-copy">
           <span className="capital-timing-kicker site-kicker">{whatWeDo.kicker}</span>
           <h2 className="capital-timing-title site-section-heading">{whatWeDo.title}</h2>
-          <p className="capital-timing-body site-body">
-            {whatWeDo.content}
-          </p>
+          <p className="capital-timing-body site-body">{whatWeDo.content}</p>
         </FadeIn>
 
         <FadeIn direction="right" delay={0.18} className="capital-timing-visual">
           <div className="capital-timing-orbit" aria-hidden="true" />
-          <CapitalTimingVideo />
-          {/* TEMP IMAGE — replace with brand asset */}
-          <img
-            className="pointer-events-none absolute inset-0 z-20 h-full w-full rounded-[1.4rem] object-cover opacity-25 mix-blend-screen"
-            src="https://images.unsplash.com/photo-1642104704074-907c0698cbd9?auto=format&fit=crop&w=1200&q=80"
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-          />
-
-          <div className="capital-timing-flow" aria-label="Capital timing flow">
-            {whatWeDo.flow.map((point, index) => (
-              <div className="capital-timing-flow-item" key={point.label}>
-                <span className="capital-timing-flow-index">0{index + 1}</span>
-                <div>
-                  <strong>{point.label}</strong>
-                  <span>{point.value}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProblemVisual />
         </FadeIn>
       </div>
     </Section>
