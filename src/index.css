@@ -804,8 +804,8 @@
 
 .vault-sim-select-menu button:hover,
 .vault-sim-select-menu button.is-active {
-  background: rgba(75, 255, 179, 0.1);
-  color: #4BFFB3;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .vault-sim-deposit {

@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { useWallet } from "../hooks/useWallet";
 import { motion } from "motion/react";
 import { usePreloader } from "./PreloaderContext";
 import { vaults } from "../config/vaults";
 import { VaultButton } from "./VaultButton";
+import { Footer } from "./Footer";
 
 type Allocation = { name: string; percent: number; color: string };
 type AllocationProfile = "conservative" | "balanced" | "aggressive";
@@ -214,13 +216,12 @@ const VaultSimulator = () => {
   const apr = projectedApr(risk, liquidity);
   const monthlyYield = Math.round((Math.max(deposit, 0) * apr) / 100 / 12);
   const jurisdictions = [
-    { flagClass: "flag-us", name: "United States" },
-    { flagClass: "flag-uk", name: "United Kingdom" },
-    { flagClass: "flag-ae", name: "United Arab Emirates" },
-    { flagClass: "flag-pk", name: "Pakistan" },
-    { flagClass: "flag-other", name: "Other" },
+    "United States",
+    "United Kingdom",
+    "United Arab Emirates",
+    "Pakistan",
+    "Other",
   ];
-  const selectedJurisdiction = jurisdictions.find((item) => item.name === jurisdiction) ?? jurisdictions[0];
 
   return (
     <section className="relative border-t border-white/8 px-4 py-20 md:px-12 md:py-24 lg:px-24">
@@ -283,7 +284,6 @@ const VaultSimulator = () => {
                     aria-expanded={isJurisdictionOpen}
                   >
                     <span className="flex items-center gap-2">
-                      <span className={`vault-country-flag ${selectedJurisdiction.flagClass}`} />
                       {jurisdiction}
                     </span>
                     <span>⌄</span>
@@ -292,16 +292,15 @@ const VaultSimulator = () => {
                     <div className="vault-sim-select-menu">
                       {jurisdictions.map((item) => (
                         <button
-                          key={item.name}
+                          key={item}
                           type="button"
-                          className={item.name === jurisdiction ? "is-active" : ""}
+                          className={item === jurisdiction ? "is-active" : ""}
                           onClick={() => {
-                            setJurisdiction(item.name);
+                            setJurisdiction(item);
                             setIsJurisdictionOpen(false);
                           }}
                         >
-                          <span className={`vault-country-flag ${item.flagClass}`} />
-                          {item.name}
+                          {item}
                         </button>
                       ))}
                     </div>
@@ -407,6 +406,44 @@ const VaultSimulator = () => {
   );
 };
 
+const VaultRemittanceCard = ({ onLearn }: { onLearn: () => void }) => {
+  return (
+    <section className="bg-[#020202] px-4 pb-24 pt-4 md:px-12 md:pb-28 lg:px-24">
+      <div className="mx-auto max-w-[88rem]">
+        <div className="relative min-h-[11rem] overflow-hidden rounded-lg border border-white/8 bg-[#04110f] shadow-[0_30px_110px_rgba(0,0,0,0.38)] md:min-h-[13.5rem]">
+          <img
+            src="/vault-remittance-card.png"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover object-[66%_center]"
+          />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,5,0.82)_0%,rgba(2,10,8,0.62)_30%,rgba(2,8,7,0.12)_56%,rgba(2,8,7,0)_100%)]"
+            aria-hidden="true"
+          />
+          <div className="relative z-10 flex min-h-[11rem] max-w-[46rem] flex-col justify-center px-6 py-8 md:min-h-[13.5rem] md:px-10 lg:px-12">
+            <h2 className="font-display text-[1.55rem] font-semibold leading-tight text-white md:text-[2rem]">
+              Built for real world remittances
+            </h2>
+            <p className="mt-2 text-[1rem] leading-6 text-white/44 md:text-[1.2rem]">
+              every cycle returns real yield back to depositors
+            </p>
+            <button
+              type="button"
+              onClick={onLearn}
+              className="mt-7 inline-flex min-h-9 w-fit items-center gap-2 rounded-md bg-[#123d35]/88 px-4 text-[0.78rem] font-medium text-white/86 transition-colors hover:bg-[#1b5948] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4BFFB3]"
+            >
+              Learn how it works
+              <ArrowRight size={13} strokeWidth={2} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export const VaultsIndexPage = () => {
   const { address, connect, isConnecting } = useWallet();
   const navigate = useNavigate();
@@ -478,6 +515,8 @@ export const VaultsIndexPage = () => {
       </motion.section>
 
       <VaultSimulator />
+      <VaultRemittanceCard onLearn={goToHowItWorks} />
+      <Footer />
     </div>
   );
 };
