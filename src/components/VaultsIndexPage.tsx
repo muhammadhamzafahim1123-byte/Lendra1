@@ -407,6 +407,8 @@ const VaultSimulator = () => {
 };
 
 const VaultRemittanceCard = ({ onLearn }: { onLearn: () => void }) => {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-[#020202] px-4 pb-24 pt-4 md:px-12 md:pb-28 lg:px-24">
       <div className="mx-auto max-w-[88rem]">
@@ -424,19 +426,29 @@ const VaultRemittanceCard = ({ onLearn }: { onLearn: () => void }) => {
           />
           <div className="relative z-10 flex min-h-[11rem] max-w-[46rem] flex-col justify-center px-6 py-8 md:min-h-[13.5rem] md:px-10 lg:px-12">
             <h2 className="font-display text-[1.55rem] font-semibold leading-tight text-white md:text-[2rem]">
-              Built for real world remittances
+              Ready to allocate beyond the generic vault?
             </h2>
-            <p className="mt-2 text-[1rem] leading-6 text-white/44 md:text-[1.2rem]">
-              every cycle returns real yield back to depositors
+            <p className="mt-2 max-w-[37rem] text-[1rem] leading-6 text-white/44 md:text-[1.12rem]">
+              Explore a vault experience built around profile-based allocation, continuous monitoring, and transparent portfolio review.
             </p>
-            <button
-              type="button"
-              onClick={onLearn}
-              className="mt-7 inline-flex min-h-9 w-fit items-center gap-2 rounded-md bg-[#123d35]/88 px-4 text-[0.78rem] font-medium text-white/86 transition-colors hover:bg-[#1b5948] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4BFFB3]"
-            >
-              Learn how it works
-              <ArrowRight size={13} strokeWidth={2} aria-hidden="true" />
-            </button>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => navigate(`/vault/${vaults[0]?.id ?? ""}`)}
+                className="inline-flex min-h-9 w-fit items-center gap-2 rounded-md bg-[#123d35]/88 px-4 text-[0.78rem] font-medium text-white/86 transition-colors hover:bg-[#1b5948] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4BFFB3]"
+              >
+                Explore Vault
+                <ArrowRight size={13} strokeWidth={2} aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={onLearn}
+                className="inline-flex min-h-9 w-fit items-center gap-2 rounded-md border border-white/12 bg-black/18 px-4 text-[0.78rem] font-medium text-white/72 transition-colors hover:border-white/22 hover:bg-white/8 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4BFFB3]"
+              >
+                Read Methodology
+                <ArrowRight size={13} strokeWidth={2} aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
